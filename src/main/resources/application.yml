@@ -1,0 +1,29 @@
+server:
+  port: 8095
+
+spring:
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://project1.cxg8vdlfu0la.ap-southeast-2.rds.amazonaws.com:3306/yejin
+    username: admin
+    password: '00000000'
+
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    hibernate:
+      ddl-auto: update # DDL?? ??
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+        globally_quoted_identifiers: true # 예약어 컬럼 사용
+
+
+  # yaml/yml ?? - Thymeleaf ??
+  thymeleaf:
+    cache: false
+    check-template-location: true
+    #    prefix: classpath:/templates/
+    #    suffix: .html
+    enabled: true
