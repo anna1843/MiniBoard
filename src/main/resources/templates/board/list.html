@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/layout/baseLayout}">
+<th:block layout:fragment="title">
+  <title>전체게시판</title>
+</th:block>
+<th:block layout:fragment="script">
+  <script th:src="@{/js/board/list.js}" defer></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+</th:block>
+<th:block layout:fragment="css">
+  <link rel="stylesheet" th:href="@{/css/board/list.css}">
+</th:block>
+<th:block layout:fragment="container">
+  <div class="nav">
+    <div class="title">
+      <h1><span></span>게시판</h1>
+<!--      추후 익명,일반,전체,비밀게시판 종류에 따라 제목이 바뀌었으면 좋겠음-->
+    </div>
+    <div class="list">
+      <table>
+        <thead>
+          <tr>
+            <th>No</th>
+            <th>구분</th>
+            <th>제목</th>
+            <th>작성자</th>
+            <th>등록일</th>
+            <th>조회수</th>
+          </tr>
+        </thead>
+        <tbody id="board">
+        </tbody>
+      </table>
+    </div>
+  </div>
+</th:block>
+</html>

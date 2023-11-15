@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/layout/baseLayout}">
+<th:block layout:fragment="title">
+  <title>수정페이지</title>
+</th:block>
+<th:block layout:fragment="script">
+  <script th:src="@{/js/board/update.js}" defer></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+</th:block>
+<th:block layout:fragment="css">
+  <link rel="stylesheet" th:href="@{/css/board/update.css}">
+</th:block>
+<th:block layout:fragment="container">
+  <div class="nav">
+    <div class="title">
+      <h1>게시판 수정하기</h1>
+    </div>
+    <div class="update-form">
+      <table>
+        <tr> <!--제목-->
+          <td>
+            <label th:for="title">제목</label>
+            <input type="text" name="title" id="title">
+          </td>
+        </tr>
+        <tr class="second"> <!--유형-->
+          <td class="radio">
+            <label th:for="type">유형</label>
+            <input type="radio" name="type" th:value="GENERAL" id="general"><span>일반게시판</span>
+            <input type="radio" name="type" th:value="ANONYMOUS" id="anonymous"><span>익명게시판</span>
+            <input type="radio" name="type" th:value="SECRET" id="secret"><span>비밀게시판</span>
+          </td>
+          <td>
+            <label th:for="writer">작성자</label>
+            <input type="text" name="writer" id="writer" readonly>
+          </td>
+        </tr>
+        <tr> <!--글자 서식-->
+          <td class="editor">
+            <div class="editor-menu">
+              <button id="btn-bold">
+                <b>B</b>
+              </button>
+              <button id="btn-italic">
+                <i>I</i>
+              </button>
+              <button id="btn-underline">
+                <u>U</u>
+              </button>
+              <button id="btn-strike">
+                <s>S</s>
+              </button>
+              <button id="btn-image" class="text">
+                첨부파일
+              </button>
+            </div>
+            <div class="content" id="editor" contenteditable="true"></div>
+          </td>
+        </tr>
+      </table>
+      <div class="submit">
+        <input type="text" class="not">
+        <input type="submit" value="작성하기" id="create">
+        <input type="reset" value="돌아가기" id="reset">
+      </div>
+    </div>
+  </div>
+</th:block>
+</html>

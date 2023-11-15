@@ -1,0 +1,35 @@
+@import url(/css/common/reset.css);
+@import url(/css/common/header.css);
+.nav{
+    width: 100vw;
+}
+.nav .title{
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    padding-top: 3vh;
+}
+/* table */
+.nav .list{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px;
+    box-sizing: border-box;
+    align-items: center;
+}
+table, td, th{
+    width: 80vw;
+    border-collapse: collapse;
+    border: 1px solid #6F6F00;
+    border-left: none;
+    border-right: none;
+    text-align: center;
+    padding: 10px;
+}
+th{
+    background: rgba(169, 169, 147, 0.51);
+    border-top: double 5px #6F6F00;
+    font-size: 20px;
+    font-weight: bold;
+}

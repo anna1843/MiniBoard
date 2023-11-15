@@ -1,0 +1,156 @@
+@import url(/css/common/reset.css);
+@import url(/css/common/header.css);
+.nav{
+    width: 100vw;
+}
+.nav .title{
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    padding-top: 3vh;
+}
+.nav .title h1{
+
+}
+/* form */
+.nav .write-form{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px;
+    box-sizing: border-box;
+    align-items: center;
+}
+/* table */
+table{
+    width: 90vw;
+    text-align: left;
+    border: double 1px #c5c5c5;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+/* td */
+td{
+    box-sizing: border-box;
+    padding: 0.5vw;
+}
+tr.second{
+    display: flex;
+    justify-content: space-between;
+}
+/* title */
+input#title{
+    width: 85.98vw;
+    padding: 10px;
+    box-sizing: border-box;
+    font-size: 18px;
+    border-radius: 5px;
+    border: 1px solid #c5c5c5;
+}
+input#title:focus{
+    border: 0.1vw solid #6F6F00;
+    outline: none;
+}
+/* writer */
+input#writer{
+    width: 10vw;
+    padding: 10px;
+    box-sizing: border-box;
+    font-size: 18px;
+    border-radius: 5px;
+    border: 1px solid #c5c5c5;
+}
+input#writer:focus{
+    border: 0.1vw solid #6F6F00;
+    outline: none;
+}
+/* radio버튼 */
+td.radio{
+    display: flex;
+    align-items: center;
+}
+span{
+    padding: 10px;
+    font-size: 18px;
+}
+[type="radio"]{
+    accent-color: #6F6F00;
+    width: 1vw;
+    height: 1vw;
+}
+/* editor */
+td.editor{
+    padding-left: 1vw;
+}
+td.editor .editor-menu{
+    display: flex;
+    justify-content: flex-start;
+    gap: 0.6vh;
+    padding-bottom: 1vw;
+}
+td.editor .editor-menu button{
+    background: none;
+    border-radius: 5px;
+    border: 1px solid #6F6F00;
+}
+td.editor .editor-menu button:not(.text){
+    width: 2rem;
+    height: 2rem;
+    font-size: 18px;
+}
+td.editor .editor-menu button.text{
+    font-size: 18px;
+}
+td.editor .editor-menu button:hover{
+    cursor: pointer;
+    box-shadow: 0px 1px 1px 0px #6F6F00, inset 0px -2px 2px -1px #6F6F0088;
+}
+td.editor .editor-menu button.active{
+    background-color: #555500;
+    color: ivory;
+}
+/*  contenteditable */
+td.editor .content{
+    padding: 10px;
+    box-sizing: border-box;
+    font-size: 18px;
+    border-radius: 5px;
+    border: 1px solid #c5c5c5;
+    height: 60vh;
+    overflow-x: scroll;
+}
+td.editor .content:focus{
+    border: 0.1vw solid #6F6F00;
+    outline: none;
+}
+/* submit */
+.nav .write-form .submit{
+    width: 90vw;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+.nav .write-form .submit input{
+    width: 10vw;
+    height: 3vw;
+    border-radius: 5px;
+    border: none;
+    font-size: 18px;
+    background: none;
+    box-shadow: 0px 1px 1px 0px #6F6F00, inset 0px -1px 1px -1px #6F6F0088;
+}
+.nav .write-form .submit input:hover{
+    cursor: pointer;
+    font-weight: bold;
+    border: 1px solid #6F6F00;
+}
+/* 내용 placeholder처리 */
+[contenteditable="true"]:empty:before{
+    content: attr(placeholder);
+    display: block;
+    color: #a6a6a6;
+}
+/* label 공통 */
+label{
+    padding: 10px;
+}

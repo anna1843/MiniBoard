@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head th:fragment="headFragment">
+<!--    공통-->
+    <meta charset="UTF-8">
+    <th:block layout:fragment="script"><!--각 페이지의 스크립트--></th:block>
+    <th:block layout:fragment="css"></th:block>
+    <th:block layout:fragment="title"><!--각 페이지의 title--></th:block>
+</head>

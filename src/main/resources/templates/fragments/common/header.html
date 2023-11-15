@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<div id="header" class="header" th:fragment="headerFragment">
+    <div class="nav">
+        <div class="top-nav">
+            <div class="left-nav">
+                <div class="logo">
+                    <a th:href="@{/}"><img th:src="@{/images/logo.png}" alt="HOME"></a>
+                </div>
+            </div>
+            <div class="right-nav">
+                <div class="menu">
+                    <ul>
+                        <li><a th:href="@{/}">회원가입</a></li>
+                        <li><a th:href="@{/}">로그인</a></li>
+                        <li><a th:href="@{/}">로그아웃</a></li>
+                        <li><a th:href="@{/}">마이페이지</a></li>
+                        <li><span></span>님</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="bottom-nav">
+            <ul>
+                <li><a th:href="@{/board/list}">전체게시판</a></li>
+                <!-- 임시 경로, type에 따른 리스트 뷰가 가능할 경우 변경 -->
+                <li><a th:href="@{/board/list?boardType='GENERAL'}">일반게시판</a></li>
+                <li><a th:href="@{/board/list?boardType='ANONYMOUS'}">익명게시판</a></li>
+                <li><a th:href="@{/board/list?boardType='SECRET'}">비밀게시판</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+</html>

@@ -5,12 +5,14 @@ import org.spring.board.dto.BoardDto;
 import org.spring.board.entity.BoardEntity;
 import org.spring.board.repository.BoardRepository;
 import org.spring.board.utill.BoardType;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -28,19 +30,32 @@ public class BoardService {
         return  result;
     }
 
+    // 페이징 + 검색 게시판조회
     @Transactional
-    public List<BoardDto> getboardList() {
+    public Page<BoardDto> getboardPagingTypeList(BoardType boardType, String select, String search, Pageable pageable) {
 
-        List<BoardDto> boardDtoList = new ArrayList<>(); // dto list를 새로 생성 -> 반환타입에 맞춤
-        List<BoardEntity> boardEntityList = boardRepository.findAll(); // list찾아
-        // entity로 가져온 list를 dto로 바꾸기 -> controller로 전달하고 이 결과값을 보내줌법
-        for( BoardEntity board : boardEntityList){
-            boardDtoList.add(toDto(board)); // return을 boradDto
-            // list함수 중에 편하게 하는 .add
+        Page<BoardEntity> boardEntities = null;
+
+//      검색기능
+        if(boardType != null){
+            if (search != null && !search.isEmpty()) {
+                if (select.equals("title")) {
+                    boardEntities = boardRepository.findByBoardTypeAndTitleContaining(boardType, search, pageable);
+                    // 제목 검색
+                } else if (select.equals("content")) {
+                    boardEntities = boardRepository.findByBoardTypeAndContentContaining(boardType, search, pageable);
+                    // 내용 검색
+                }
+            }else {
+                boardEntities = boardRepository.findByBoardType(boardType, pageable);
+            }
+        }else{
+//            boardType이 null -> 전체
+            boardEntities = boardRepository.findAll(pageable);
         }
-        // 리스트는 여러개야, 리스트로 가져온 entity를 entity하나하나로 저장
 
-        return boardDtoList;
+        // 페이징 처리 위한 임시 작성ㅜ
+        return boardEntities.map(BoardDto::toDto);
 
     }
 
@@ -96,8 +111,9 @@ public class BoardService {
     }
 
     // 조회수 증가
-    @Transactional
     private void updateHit(Long id) {
         boardRepository.updateHit(id);
     }
+
+
 }
